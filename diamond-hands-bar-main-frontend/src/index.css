@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minecraft-inspired Bar Game Design System */
+
+@layer base {
+  :root {
+    /* Bar Environment Colors */
+    --background: 25 30% 8%;
+    --foreground: 39 20% 90%;
+
+    /* Wood Textures */
+    --wood: 25 35% 25%;
+    --wood-dark: 25 40% 15%;
+    --wood-light: 25 30% 35%;
+
+    /* Game Elements */
+    --gold: 43 92% 55%;
+    --gold-glow: 43 100% 65%;
+    --diamond: 199 100% 60%;
+    --diamond-glow: 199 100% 75%;
+    --iron: 210 10% 60%;
+    --creeper: 120 60% 35%;
+    --creeper-glow: 0 100% 45%;
+    --lantern: 39 100% 60%;
+
+    /* UI Elements */
+    --card: 25 25% 18%;
+    --card-foreground: 39 20% 85%;
+
+    --popover: 25 30% 12%;
+    --popover-foreground: 39 20% 90%;
+
+    --primary: 43 92% 55%;
+    --primary-foreground: 25 30% 8%;
+
+    --secondary: 199 100% 60%;
+    --secondary-foreground: 25 30% 8%;
+
+    --muted: 25 20% 20%;
+    --muted-foreground: 39 15% 65%;
+
+    --accent: 120 40% 45%;
+    --accent-foreground: 39 20% 90%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 39 20% 90%;
+
+    --border: 25 25% 25%;
+    --input: 25 25% 20%;
+    --ring: 43 92% 55%;
+
+    --radius: 4px;
+
+    /* Gradients */
+    --gradient-wood: linear-gradient(
+      135deg,
+      hsl(25 35% 25%),
+      hsl(25 40% 15%),
+      hsl(25 30% 30%)
+    );
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(43 92% 55%),
+      hsl(43 100% 70%),
+      hsl(43 92% 55%)
+    );
+    --gradient-diamond: linear-gradient(
+      135deg,
+      hsl(199 100% 60%),
+      hsl(199 100% 85%),
+      hsl(189 100% 70%)
+    );
+    --gradient-creeper: radial-gradient(
+      circle,
+      hsl(0 100% 45%),
+      hsl(0 85% 35%)
+    );
+    --gradient-lantern: radial-gradient(
+      circle at 30% 30%,
+      hsl(39 100% 70%),
+      hsl(39 100% 50%) 40%,
+      hsl(39 80% 30%) 100%
+    );
+    --gradient-table: linear-gradient(
+      180deg,
+      hsl(25 35% 28%),
+      hsl(25 40% 20%) 50%,
+      hsl(25 35% 15%)
+    );
+
+    /* Typography */
+    --font-minecraft: "Press Start 2P", "Courier New", monospace;
+
+    /* Shadows */
+    --shadow-ambient: 0 8px 32px hsl(25 50% 5% / 0.8);
+    --shadow-card: 0 4px 12px hsl(25 50% 5% / 0.6);
+    --shadow-button: 0 2px 8px hsl(25 50% 5% / 0.4);
+  }
+
+  .dark {
+    /* Dark mode uses the same palette since we're in a bar setting */
+    /* Keeping it consistent for the game atmosphere */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Minecraft Font Import */
+  @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-wood-dark;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-wood;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-wood-light;
+  }
+}
+
+@layer components {
+  /* 3D Card Styles */
+  .card-3d {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+  }
+
+  .card-face {
+    backface-visibility: hidden;
+    position: absolute;
+    inset: 0;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Game Table Surface */
+  .game-table {
+    background: var(--gradient-table);
+    box-shadow: var(--shadow-ambient);
+    transform: perspective(2000px) rotateX(5deg);
+    transform-style: preserve-3d;
+  }
+
+  /* Pixel Art Rendering */
+  .pixel-art {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  /* Glow Effects */
+  .glow-gold {
+    filter: drop-shadow(0 0 20px hsl(var(--gold-glow) / 0.6));
+  }
+
+  .glow-diamond {
+    filter: drop-shadow(0 0 30px hsl(var(--diamond-glow) / 0.8));
+  }
+
+  .glow-creeper {
+    filter: drop-shadow(0 0 40px hsl(var(--creeper-glow) / 0.9));
+  }
+
+  /* Button 3D Effect */
+  .button-3d {
+    @apply shadow-3d transition-all;
+    transform: translateY(0);
+  }
+
+  .button-3d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 hsl(var(--wood-dark)),
+      0 10px 25px hsl(var(--wood-dark) / 0.4);
+  }
+
+  .button-3d:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 hsl(var(--wood-dark)),
+      0 4px 10px hsl(var(--wood-dark) / 0.2);
+  }
+}
