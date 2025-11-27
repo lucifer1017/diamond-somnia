@@ -140,6 +140,18 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-wood-light;
   }
+
+  .ledger-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .ledger-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gold/60 rounded-full;
+  }
+
+  .ledger-scrollbar::-webkit-scrollbar-track {
+    @apply bg-wood-dark/40;
+  }
 }
 
 @layer components {
