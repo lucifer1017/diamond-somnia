@@ -70,7 +70,7 @@ MetaMask (Somnia Testnet) ──▶ React (Vite) ──▶ Somnia Data Streams
 cd diamond-hands-bar-main-frontend
 npm install
 cp .env.example .env     # set VITE_SDS_SCHEMA_ID (see compute script / README)
-npm run dev              # http://localhost:5173 by default
+npm run dev             
 ```
 
 Required environment variables:
@@ -88,13 +88,6 @@ node scripts/computeSchema.mjs
 
 ---
 
-## Deploying to Vercel
-
-1. Push the repo to GitHub.
-2. Create a new Vercel project, pointing to `diamond-hands-bar-main-frontend`.
-3. Set build settings (Vercel auto-detects Vite, but `vercel.json` is included just in case).
-4. Add the environment variables above in Vercel’s dashboard.
-5. Deploy. The live site is your “Web3 dApp on Somnia Testnet” entry point—MetaMask prompts will target Somnia automatically.
 
 ---
 
