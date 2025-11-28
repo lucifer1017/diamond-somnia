@@ -8,6 +8,8 @@ Diamond Hands Bar is a two‑player card game themed as a tavern showdown. We re
 - **Share a lobby code** so friends can **watch the live game** as it plays out.
 - **Browse the Tavern Ledger**, which pulls historical wins straight from Somnia Streams.
 
+Live deployment: **https://diamond-somnia.vercel.app/**
+
 Everything runs as a Vite + React SPA hosted on Vercel, but all state persistence is handled by SDS—no custom smart contracts required.
 
 ---
@@ -99,9 +101,19 @@ node scripts/computeSchema.mjs
 ## Hackathon Deliverables Checklist
 
 - [x] SDS integration (match results + live lobbies + ledger).
-- [x] Live Vercel deployment (Somnia Testnet ready).
-- [ ] README section in `diamond-hands-bar-main-frontend/README.md` referencing this root summary (TODO).
-- [ ] Demo video (3–5 min) showing host play, watcher view, ledger refresh, explorer link.
+- [x] Live Vercel deployment (Somnia Testnet ready) — https://diamond-somnia.vercel.app/
+
+
+---
+
+## Judging Criteria — How Diamond Hands Bar Scores
+
+| Criterion | How the project meets it |
+| --- | --- |
+| **Technical Excellence** | The frontend uses Somnia SDS for both writes and reads, handling schema registration, deterministic data IDs, and Viem clients within `src/lib/somnia.ts`. Match publishing includes event emission + explorer proof, while watchers and ledgers consume decoded data directly—no mock data or centralized DB. |
+| **Real-Time UX** | Shared lobbies let spectators join via room code and immediately poll SDS `getByKey` for the host’s state every 3 seconds, so scores update live without page refreshes. On-chain proof cards and the Tavern Ledger refresh automatically after each confirmed publish, reinforcing the live experience. |
+| **Somnia Integration** | All blockchain traffic goes through the official Somnia Testnet RPCs (defaulting to `https://dream-rpc.somnia.network`). MetaMask prompts require Somnia Testnet, and the live deployment at https://diamond-somnia.vercel.app/ works end-to-end on that network with no other chains involved. |
+| **Potential Impact** | The reusable schemas (match results + live rooms) enable future analytics dashboards, tournaments, or multi-table spectators with zero additional contracts. Other builders can subscribe to the same streams, making this a strong showcase for SDS-based gaming and a foundation for further ecosystem tools. |
 
 ---
 
