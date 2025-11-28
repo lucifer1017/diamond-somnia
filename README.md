@@ -122,9 +122,5 @@ node scripts/computeSchema.mjs
 - Somnia Docs: https://docs.somnia.network
 - Data Streams Portal: https://datastreams.somnia.network
 - Shannon Explorer: https://shannon-explorer.somnia.network
-- Hackathon Info: see prompt above / Telegram https://t.me/+XHq0F0JXMyhmMzM0
 
----
-
-Questions, tweaks, or demo planning? Let me know and we’ll iterate. Cheers! 🍻
 
